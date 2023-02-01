@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "useUnknownInCatchVariables": true,
+
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "skipDefaultLibCheck": true,
+        "target": "ESNext",
+
+        "jsx": "preserve",
+        "jsxImportSource": "solid-js"
+    },
+    "include": ["src"]
+}
