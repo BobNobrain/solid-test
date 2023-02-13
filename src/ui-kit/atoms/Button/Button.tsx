@@ -10,6 +10,7 @@ export interface ButtonProps {
     size?: Size;
     disabled?: boolean;
     square?: boolean;
+    loading?: boolean;
 
     onClick?: (ev: MouseEvent) => void;
 }
@@ -24,6 +25,7 @@ export const Button: Component<ParentProps<ButtonProps>> = (props) => {
             [styles[`size-${props.size ?? 'm'}`]]: true,
             [styles.disabled]: props.disabled,
             [styles.square]: props.square,
+            [styles.loading]: props.loading,
         };
     });
 
@@ -34,7 +36,7 @@ export const Button: Component<ParentProps<ButtonProps>> = (props) => {
             classList={classList()}
             disabled={props.disabled}
             onClick={(ev) => {
-                if (!props.disabled && props.onClick) {
+                if (!props.disabled && !props.loading && props.onClick) {
                     props.onClick(ev);
                 }
             }}

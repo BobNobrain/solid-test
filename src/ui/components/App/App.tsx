@@ -167,6 +167,13 @@ export function App() {
                 <Button color="info">Info</Button>
                 <Button color="warn">Warn</Button>
                 <Button color="error">Error</Button>
+
+                <Button loading>Default</Button>
+                <Button loading color="primary">Primary</Button>
+                <Button loading color="success">Success</Button>
+                <Button loading color="info">Info</Button>
+                <Button loading color="warn">Warn</Button>
+                <Button loading color="error">Error</Button>
             </Container>
             <Container>
                 <Button mode="pale">Default</Button>
@@ -175,6 +182,13 @@ export function App() {
                 <Button mode="pale" color="info">Info</Button>
                 <Button mode="pale" color="warn">Warn</Button>
                 <Button mode="pale" color="error">Error</Button>
+
+                <Button loading mode="pale">Default</Button>
+                <Button loading mode="pale" color="primary">Primary</Button>
+                <Button loading mode="pale" color="success">Success</Button>
+                <Button loading mode="pale" color="info">Info</Button>
+                <Button loading mode="pale" color="warn">Warn</Button>
+                <Button loading mode="pale" color="error">Error</Button>
             </Container>
             <Container>
                 <Button mode="text">Default</Button>
@@ -183,6 +197,13 @@ export function App() {
                 <Button mode="text" color="info">Info</Button>
                 <Button mode="text" color="warn">Warn</Button>
                 <Button mode="text" color="error">Error</Button>
+
+                <Button loading mode="text">Default</Button>
+                <Button loading mode="text" color="primary">Primary</Button>
+                <Button loading mode="text" color="success">Success</Button>
+                <Button loading mode="text" color="info">Info</Button>
+                <Button loading mode="text" color="warn">Warn</Button>
+                <Button loading mode="text" color="error">Error</Button>
             </Container>
             <Container>
                 <Button disabled>Disabled</Button>

@@ -10,6 +10,8 @@
     border-radius: var(--size-1);
     outline: none;
 
+    height: var(--size);
+
     transition: all var(--transition-quick) ease-in-out;
 
     --button-color: rgb(var(--color-rgb));
@@ -20,13 +22,17 @@
     --button-text-color: var(--color-text-contrast);
 }
 
-.button:hover {
+.button.loading {
+    cursor: wait;
+}
+
+.button:not(.loading):hover {
     color: var(--button-text-hover, var(--button-text, transparent));
     border-color: var(--button-border-hover, var(--button-border, transparent));
     background: var(--button-bg-hover, var(--button-bg, transparent));
 }
 
-.button:active {
+.button:not(.loading):active {
     color: var(--button-text-active, var(--button-text, transparent));
     background: var(--button-bg-active, var(--button-bg, transparent));
     border-color: var(--button-border-active, var(--button-border, transparent));
@@ -59,6 +65,7 @@
 
 .mode-solid {
     --button-bg: var(--button-color);
+    --button-bg-loading: var(--button-color-light);
     --button-bg-active: var(--button-color-dark);
     --button-border: transparent;
     --button-border-hover: var(--button-color-light);
@@ -74,6 +81,7 @@
 
 .mode-pale {
     --button-bg: var(--button-color-5, transparent);
+    --button-bg-loading: var(--button-color-25);
     --button-bg-hover: var(--button-color-25);
     --button-bg-active: var(--button-color-25);
     --button-text: var(--button-color);
@@ -106,40 +114,88 @@
 .size-xs {
     --button-vpad: var(--size-1);
     --button-hpad: var(--size-1-5);
-    height: 24px;
+    --size: 24px;
 
     composes: text-xs from "../../typography.css";
 }
 .size-s {
     --button-vpad: var(--size-1);
     --button-hpad: var(--size-2);
-    height: 28px;
+    --size: 28px;
 
     composes: text-s from "../../typography.css";
 }
 .size-m {
     --button-vpad: var(--size-1-5);
     --button-hpad: var(--size-2-5);
-    height: 36px;
+    --size: 36px;
 
     composes: text-m from "../../typography.css";
 }
 .size-l {
     --button-vpad: var(--size-2);
     --button-hpad: var(--size-3);
-    height: 48px;
+    --size: 48px;
 
     composes: text-l from "../../typography.css";
 }
 .size-xl {
     --button-vpad: var(--size-2-5);
     --button-hpad: var(--size-3-5);
-    height: 64px;
+    --size: 64px;
 
     composes: text-xl from "../../typography.css";
 }
 
 .square {
-    aspect-ratio: 1;
+    width: var(--size);
     --button-hpad: var(--button-vpad);
+}
+
+.mode-solid.loading {
+    background: repeating-linear-gradient(45deg,
+            var(--button-bg),
+            rgba(var(--color-rgb), 0.7) calc(var(--size) / 2),
+            var(--button-bg) var(--size));
+
+    background-size: calc(var(--size) * 1.414213 + 4px) calc(var(--size) * 1.414213 + 4px);
+    border-color: transparent;
+    background-position-y: -2px;
+
+    animation: button-loading-background linear 1s infinite;
+}
+
+@keyframes button-loading-background {
+    0% {
+        background-position-x: -2px;
+    }
+    100% {
+        background-position-x: calc(var(--size) * 1.414213 + 2px);
+    }
+}
+
+.mode-pale.loading {
+    background: repeating-linear-gradient(45deg,
+            var(--button-color-5),
+            var(--button-color-25) calc(var(--size) / 2),
+            var(--button-color-5) var(--size));
+
+    background-size: calc(var(--size) * 1.414213 + 4px) calc(var(--size) * 1.414213 + 4px);
+    border-color: transparent;
+    background-position-y: -2px;
+
+    animation: button-loading-background linear 1s infinite;
+}
+
+.mode-text.loading {
+    animation: button-flashing-text ease-in-out 700ms infinite alternate;
+}
+
+@keyframes button-flashing-text {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
 }
