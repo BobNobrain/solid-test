@@ -1,0 +1,96 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+
+    padding: 0 var(--size-0-5);
+
+    border: 2px solid var(--border-color-light);
+    border-radius: var(--border-radius);
+    cursor: text;
+
+    background-color: #f3f3f3;
+}
+
+.wrapper:focus-within {
+    background-color: #f7f7f7;
+    border-color: rgb(var(--primary-light-rgb));
+}
+
+.validity-success {
+    border-color: rgb(var(--success-rgb));
+    background-color: rgba(var(--success-rgb), 0.07);
+}
+.validity-error {
+    border-color: rgb(var(--error-rgb));
+    background-color: rgba(var(--error-rgb), 0.03);
+}
+
+.disabled {
+    background-color: var(--bg-main-25);
+}
+
+.with-label {
+    position: relative;
+}
+
+.with-label.size-xs {
+    margin-top: var(--size-3);
+}
+.with-label.size-s {
+    margin-top: var(--size-3);
+}
+.with-label.size-m {
+    margin-top: 20px;
+}
+.with-label.size-l {
+    margin-top: var(--size-3-5);
+}
+.with-label.size-xl {
+    margin-top: var(--size-4);
+}
+
+.label {
+    background-color: var(--border-color-light);
+    position: absolute;
+    bottom: 100%;
+    left: -2px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: calc(100% + 4px);
+}
+.wrapper:focus-within .label {
+    background-color: rgb(var(--primary-rgb));
+    color: var(--text-inverse);
+}
+
+.label-size-xs {
+    composes: text-xs from "../../../typography.css";
+    padding: var(--size-0-5) var(--size-1-5);
+}
+.label-size-s {
+    composes: text-xs from "../../../typography.css";
+    padding: var(--size-0-5) var(--size-1-5);
+}
+.label-size-m {
+    composes: text-s from "../../../typography.css";
+    padding: var(--size-0-5) var(--size-1-5);
+}
+.label-size-l {
+    composes: text-m from "../../../typography.css";
+    padding: var(--size-0-5) var(--size-1-5);
+}
+.label-size-xl {
+    composes: text-l from "../../../typography.css";
+    padding: var(--size-0-5) var(--size-1-5);
+}
+
+.label-validity-error {
+    background-color: rgb(var(--error-rgb));
+    color: var(--text-inverse);
+}
+.label-validity-success {
+    background-color: rgb(var(--success-rgb));
+    color: var(--text-inverse);
+}

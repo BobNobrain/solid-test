@@ -1,5 +1,9 @@
 {
-    "extends": ["eslint:recommended", "airbnb-base", "plugin:@typescript-eslint/recommended"],
+    "extends": [
+        "eslint:recommended",
+        "airbnb-base",
+        "plugin:@typescript-eslint/recommended"
+    ],
     "env": {
         "node": true,
         "es6": true,
@@ -9,24 +13,36 @@
     "settings": {
         "import/resolver": {
             "node": {
-                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".ts",
+                    ".tsx"
+                ]
             }
         }
     },
-    "plugins": ["@typescript-eslint"],
+    "plugins": [
+        "@typescript-eslint"
+    ],
     "root": true,
     "rules": {
+        "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/no-empty-interface": "warn",
-
         "import/extensions": "off",
         "import/prefer-default-export": "off",
-
         "arrow-body-style": "off",
-        "indent": ["error", 4]
+        "indent": [
+            "error",
+            4
+        ],
+        "no-confusing-arrow": "off"
     },
     "overrides": [
         {
-            "files": ["*.js"],
+            "files": [
+                "*.js"
+            ],
             "rules": {
                 "@typescript-eslint/no-var-requires": "off"
             }

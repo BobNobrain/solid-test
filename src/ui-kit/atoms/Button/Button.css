@@ -1,0 +1,145 @@
+.button {
+    background: var(--button-bg, transparent);
+    color: var(--button-text, transparent);
+
+    cursor: pointer;
+
+    border: 2px solid var(--button-border, transparent);
+
+    padding: var(--button-vpad, var(--size-1-5)) var(--button-hpad, var(--size-2-5));
+    border-radius: var(--size-1);
+    outline: none;
+
+    transition: all var(--transition-quick) ease-in-out;
+
+    --button-color: rgb(var(--color-rgb));
+    --button-color-light: rgb(var(--color-light-rgb));
+    --button-color-dark: rgb(var(--color-dark-rgb));
+    --button-color-25: rgba(var(--color-rgb), .2);
+    --button-color-5: rgba(var(--color-rgb), .05);
+    --button-text-color: var(--color-text-contrast);
+}
+
+.button:hover {
+    color: var(--button-text-hover, var(--button-text, transparent));
+    border-color: var(--button-border-hover, var(--button-border, transparent));
+    background: var(--button-bg-hover, var(--button-bg, transparent));
+}
+
+.button:active {
+    color: var(--button-text-active, var(--button-text, transparent));
+    background: var(--button-bg-active, var(--button-bg, transparent));
+    border-color: var(--button-border-active, var(--button-border, transparent));
+
+    transform: scale(0.97);
+}
+
+.color-default {
+    composes: default from "../../colors.css";
+}
+.color-primary {
+    composes: primary from "../../colors.css";
+}
+.color-success {
+    composes: success from "../../colors.css";
+}
+.color-info {
+    composes: info from "../../colors.css";
+}
+.color-warn {
+    composes: warn from "../../colors.css";
+}
+.color-error {
+    composes: error from "../../colors.css";
+}
+
+.color-disabled {
+    --button-color: var(--bg-main-100);
+}
+
+.mode-solid {
+    --button-bg: var(--button-color);
+    --button-bg-active: var(--button-color-dark);
+    --button-border: transparent;
+    --button-border-hover: var(--button-color-light);
+    --button-text: var(--button-text-color);
+}
+.mode-solid:focus-visible {
+    outline: 1px solid var(--button-text);
+    box-shadow: 0 0 var(--button-hpad) var(--button-color);
+}
+.mode-solid.color-default:focus-visible {
+    box-shadow: 0 0 var(--button-hpad) var(--button-color-dark);
+}
+
+.mode-pale {
+    --button-bg: var(--button-color-5, transparent);
+    --button-bg-hover: var(--button-color-25);
+    --button-bg-active: var(--button-color-25);
+    --button-text: var(--button-color);
+}
+.mode-pale.color-default {
+    --button-text: var(--text-main);
+}
+.mode-pale:focus-visible {
+    outline: 1px solid var(--button-color);
+}
+
+.mode-text {
+    --button-text: var(--button-color);
+    --button-text-hover: var(--button-color-dark);
+}
+.mode-text.color-default {
+    --button-text: var(--text-main);
+    --button-text-hover: var(--text-dim);
+}
+.mode-text:focus-visible {
+    text-decoration: underline;
+}
+
+.disabled {
+    cursor: default;
+    pointer-events: none;
+    color: var(--text-dim);
+}
+
+.size-xs {
+    --button-vpad: var(--size-1);
+    --button-hpad: var(--size-1-5);
+    height: 24px;
+
+    composes: text-xs from "../../typography.css";
+}
+.size-s {
+    --button-vpad: var(--size-1);
+    --button-hpad: var(--size-2);
+    height: 28px;
+
+    composes: text-s from "../../typography.css";
+}
+.size-m {
+    --button-vpad: var(--size-1-5);
+    --button-hpad: var(--size-2-5);
+    height: 36px;
+
+    composes: text-m from "../../typography.css";
+}
+.size-l {
+    --button-vpad: var(--size-2);
+    --button-hpad: var(--size-3);
+    height: 48px;
+
+    composes: text-l from "../../typography.css";
+}
+.size-xl {
+    --button-vpad: var(--size-2-5);
+    --button-hpad: var(--size-3-5);
+    height: 64px;
+
+    composes: text-xl from "../../typography.css";
+}
+
+.square {
+    aspect-ratio: 1;
+    --button-hpad: var(--button-vpad);
+}

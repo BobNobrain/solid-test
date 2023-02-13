@@ -1,0 +1,71 @@
+@font-face {
+    font-family: 'Nunito';
+    src: url('./assets/fonts/Nunito-VariableFont_wght.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'Nunito';
+    src: url('./assets/fonts/Nunito-Italic-VariableFont_wght.ttf') format('truetype');
+    font-style: italic;
+    font-weight: normal;
+}
+
+.heading-1 {
+    font-size: var(--size-5);
+    line-height: 70px;
+}
+.heading-2 {
+    font-size: var(--size-4-5);
+    line-height: 54px;
+}
+.heading-3 {
+    font-size: var(--size-4);
+    line-height: 36px;
+}
+.heading-4 {
+    font-size: var(--size-3-5);
+    line-height: 28px;
+}
+.heading-5 {
+    font-size: var(--size-3);
+    line-height: 20px;
+}
+.heading-6 {
+    font-size: var(--size-3);
+    line-height: 20px;
+}
+
+.text-xl {
+    font-size: var(--size-4);
+    line-height: 36px;
+}
+.text-l {
+    font-size: var(--size-3-5);
+    line-height: 28px;
+}
+.text-m {
+    font-size: var(--size-3);
+    line-height: 20px;
+}
+.text-s {
+    font-size: var(--size-2-5);
+    line-height: 16px;
+}
+.text-xs {
+    font-size: 10px;
+    line-height: 12px;
+}
+
+.weight-bold {
+    font-weight: 600;
+    font-variation-settings: "wght" 600, "GRAD" 600;
+}
+.weight-normal {
+    font-weight: 400;
+    font-variation-settings: "wght" 400, "GRAD" 400;
+}
+.weight-light {
+    font-weight: 300;
+    font-variation-settings: "wght" 300, "GRAD" 300;
+}

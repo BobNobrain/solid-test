@@ -1,0 +1,45 @@
+.heading {
+    margin: 0;
+}
+
+.h1 {
+    margin-top: var(--size-3-5);
+    margin-bottom: var(--size-2-5);
+
+    composes: heading-1 from "../../../typography.css", weight-normal from "../../../typography.css";
+}
+
+.h2 {
+    margin-top: var(--size-3);
+    margin-bottom: var(--size-2);
+
+    composes: heading-2 from "../../../typography.css", weight-normal from "../../../typography.css";
+}
+
+.h3 {
+    margin-top: var(--size-3);
+    margin-bottom: var(--size-2);
+
+    composes: heading-3 from "../../../typography.css", weight-normal from "../../../typography.css";
+}
+
+.h4 {
+    margin-top: var(--size-2-5);
+    margin-bottom: var(--size-1-5);
+
+    composes: heading-4 from "../../../typography.css", weight-normal from "../../../typography.css";
+}
+
+.h5 {
+    margin-top: var(--size-2-5);
+    margin-bottom: var(--size-1-5);
+
+    composes: heading-5 from "../../../typography.css", weight-bold from "../../../typography.css";
+}
+
+.h6 {
+    margin-top: var(--size-2);
+    margin-bottom: var(--size-1);
+
+    composes: heading-6 from "../../../typography.css", weight-normal from "../../../typography.css";
+}

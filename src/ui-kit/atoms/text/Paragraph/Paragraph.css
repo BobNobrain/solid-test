@@ -1,0 +1,4 @@
+.paragraph {
+    margin-top: var(--size-1);
+    margin-bottom: var(--size-2);
+}

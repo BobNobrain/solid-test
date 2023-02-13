@@ -1,0 +1,56 @@
+:root {
+    --text-main: #222;
+    --text-dim: #575757;
+    --text-inverse: #eee;
+
+    --bg-main: #e7e7e7;
+    --bg-main-25: #e0e0e0;
+    --bg-main-50: #cdcdcd;
+    --bg-main-100: #adadad;
+    --bg-main-200: #818181;
+    --bg-main-300: #555;
+
+    --border-color: #777;
+    --border-color-light: #ccc;
+
+    --default-dark-rgb: 173, 173, 173;
+    --default-rgb: 205, 205, 205;
+    --default-light-rgb: 224, 224, 224;
+
+    --primary-dark-rgb: 61, 18, 85;
+    --primary-rgb: 88, 42, 114;
+    --primary-light-rgb: 118, 75, 142;
+
+    --info-dark-rgb: 0, 68, 175;
+    --info-rgb: 71, 110, 226;
+    --info-light-rgb: 129, 156, 255;
+
+    --success-dark-rgb: 0, 141, 0;
+    --success-rgb: 21, 191, 6;
+    --success-light-rgb: 89, 214, 78;
+
+    --error-dark-rgb: 144, 25, 10;
+    --error-rgb: 187, 34, 17;
+    --error-light-rgb: 206, 50, 33;
+
+    --warn-dark-rgb: 189, 126, 0;
+    --warn-rgb: 240, 161, 4;
+    --warn-light-rgb: 255, 188, 55;
+
+    --size-0-5: 2px;
+    --size-1: 4px;
+    --size-1-5: 6px;
+    --size-2: 8px;
+    --size-2-5: 12px;
+    --size-3: 16px;
+    --size-3-5: 24px;
+    --size-4: 32px;
+    --size-4-5: 48px;
+    --size-5: 64px;
+
+    --border-radius: var(--size-0-5);
+
+    --transition-quick: 50ms;
+    --transition-medium: 100ms;
+    --transition-long: 200ms;
+}

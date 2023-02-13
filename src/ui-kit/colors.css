@@ -1,0 +1,41 @@
+.primary {
+    --color-rgb: var(--primary-rgb);
+    --color-light-rgb: var(--primary-light-rgb);
+    --color-dark-rgb: var(--primary-dark-rgb);
+    --color-text-contrast: var(--text-inverse);
+}
+
+.default {
+    --color-rgb: var(--default-rgb);
+    --color-light-rgb: var(--default-light-rgb);
+    --color-dark-rgb: var(--default-dark-rgb);
+    --color-text-contrast: var(--text-main);
+}
+
+.info {
+    --color-rgb: var(--info-rgb);
+    --color-light-rgb: var(--info-light-rgb);
+    --color-dark-rgb: var(--info-dark-rgb);
+    --color-text-contrast: var(--text-inverse);
+}
+
+.success {
+    --color-rgb: var(--success-rgb);
+    --color-light-rgb: var(--success-light-rgb);
+    --color-dark-rgb: var(--success-dark-rgb);
+    --color-text-contrast: var(--text-inverse);
+}
+
+.warn {
+    --color-rgb: var(--warn-rgb);
+    --color-light-rgb: var(--warn-light-rgb);
+    --color-dark-rgb: var(--warn-dark-rgb);
+    --color-text-contrast: var(--text-inverse);
+}
+
+.error {
+    --color-rgb: var(--error-rgb);
+    --color-light-rgb: var(--error-light-rgb);
+    --color-dark-rgb: var(--error-dark-rgb);
+    --color-text-contrast: var(--text-inverse);
+}
