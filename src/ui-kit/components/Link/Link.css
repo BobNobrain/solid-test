@@ -1,0 +1,18 @@
+.link {
+    composes: primary from "../../colors.css";
+
+    color: rgb(var(--color-rgb));
+}
+
+.link:hover {
+    color: rgb(var(--color-light-rgb));
+    text-decoration: none;
+}
+
+.link:active {
+    color: rgb(var(--color-dark-rgb));
+}
+
+.link:visited {
+    color: rgb(var(--color-rgb));
+}

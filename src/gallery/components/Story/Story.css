@@ -1,0 +1,19 @@
+.canvas {
+    flex: 1 1 auto;
+    padding: var(--size-3);
+}
+
+.controls {
+    flex: 0 0 300px;
+    overflow: auto;
+
+    border-top: 1px solid var(--border-color);
+    padding: var(--size-3);
+
+    display: flex;
+    flex-flow: column;
+}
+
+.controls > * {
+    margin-bottom: var(--size-2);
+}

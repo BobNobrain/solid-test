@@ -1,14 +1,15 @@
 import { createSignal } from 'solid-js';
-import { Button } from '../../../ui-kit/atoms/Button/Button';
-import { Card } from '../../../ui-kit/atoms/Card/Card';
-import { Container } from '../../../ui-kit/atoms/Container/Container';
-import { Checkbox } from '../../../ui-kit/atoms/inputs/Checkbox/Checkbox';
-import { Radiobox } from '../../../ui-kit/atoms/inputs/Radiobox/Radiobox';
-import { TextInput } from '../../../ui-kit/atoms/inputs/TextInput/TextInput';
-import { Heading } from '../../../ui-kit/atoms/text/Heading/Heading';
-import { Paragraph } from '../../../ui-kit/atoms/text/Paragraph/Paragraph';
-import { Text } from '../../../ui-kit/atoms/text/Text/Text';
+import { Button } from '../../../ui-kit/components/Button/Button';
+import { container } from '../../../ui-kit/atoms/container/container';
+import { Checkbox } from '../../../ui-kit/components/inputs/Checkbox/Checkbox';
+import { Radiobox } from '../../../ui-kit/components/inputs/Radiobox/Radiobox';
+import { TextInput } from '../../../ui-kit/components/inputs/TextInput/TextInput';
+import { Link } from '../../../ui-kit/components/Link/Link';
+import { Heading } from '../../../ui-kit/components/text/Heading/Heading';
+import { Paragraph } from '../../../ui-kit/components/text/Paragraph/Paragraph';
+import { Text } from '../../../ui-kit/components/text/Text/Text';
 import { IconCross } from '../../../ui-kit/icons/IconCross';
+import { card } from '../../../ui-kit/atoms/card/card';
 
 export function App() {
     const [getN, setN] = createSignal(0);
@@ -21,9 +22,9 @@ export function App() {
     const selectOdd = () => setRadio(false);
 
     return (
-        <Container direction="column">
-            <Card>
-                <Container direction="column">
+        <div classList={container({ direction: 'column' })}>
+            <div classList={card({})}>
+                <div classList={container({ direction: 'column' })}>
                     <div>
                         <Text color="default" tag="div">{getText()}</Text>
                         <Text color="primary" tag="div">{getText()}</Text>
@@ -32,8 +33,8 @@ export function App() {
                         <Text color="warn" tag="div">{getText()}</Text>
                         <Text color="error" tag="div">{getText()}</Text>
                     </div>
-                </Container>
-                <Container direction="column">
+                </div>
+                <div classList={container({ direction: 'column' })}>
                     <Text dim tag="div">
                         <Text color="default" tag="div">{getText()}</Text>
                         <Text color="primary" tag="div">{getText()}</Text>
@@ -42,8 +43,8 @@ export function App() {
                         <Text color="warn" tag="div">{getText()}</Text>
                         <Text color="error" tag="div">{getText()}</Text>
                     </Text>
-                </Container>
-                <Container direction="column">
+                </div>
+                <div classList={container({ direction: 'column' })}>
                     <Text italic tag="div">
                         <Text color="default" tag="div">{getText()}</Text>
                         <Text color="primary" tag="div">{getText()}</Text>
@@ -52,8 +53,8 @@ export function App() {
                         <Text color="warn" tag="div">{getText()}</Text>
                         <Text color="error" tag="div">{getText()}</Text>
                     </Text>
-                </Container>
-                <Container direction="column">
+                </div>
+                <div classList={container({ direction: 'column' })}>
                     <Text light tag="div">
                         <Text color="default" tag="div">{getText()}</Text>
                         <Text color="primary" tag="div">{getText()}</Text>
@@ -62,8 +63,8 @@ export function App() {
                         <Text color="warn" tag="div">{getText()}</Text>
                         <Text color="error" tag="div">{getText()}</Text>
                     </Text>
-                </Container>
-                <Container direction="column">
+                </div>
+                <div classList={container({ direction: 'column' })}>
                     <Text bold tag="div">
                         <Text color="default" tag="div">{getText()}</Text>
                         <Text color="primary" tag="div">{getText()}</Text>
@@ -72,14 +73,14 @@ export function App() {
                         <Text color="warn" tag="div">{getText()}</Text>
                         <Text color="error" tag="div">{getText()}</Text>
                     </Text>
-                </Container>
-                <Container direction="column">
+                </div>
+                <div classList={container({ direction: 'column' })}>
                     <Text size="xs">{getText()}</Text>
                     <Text size="s">{getText()}</Text>
                     <Text size="m">{getText()}</Text>
                     <Text size="l">{getText()}</Text>
                     <Text size="xl">{getText()}</Text>
-                </Container>
+                </div>
                 <div>
                     <Heading level="1">Lorem ipsum H1</Heading>
                     <Heading level="2">Lorem ipsum H2</Heading>
@@ -88,30 +89,37 @@ export function App() {
                     <Heading level="3">Lorem ipsum H3</Heading>
                     <Paragraph>Lorem ipsum dolor sit amet</Paragraph>
                     <Heading level="3">Lorem ipsum H3</Heading>
-                    <Paragraph>Lorem ipsum dolor sit amet</Paragraph>
+                    <Paragraph>
+                        Lorem ipsum dolor sit amet
+                        <Link href="http://example.com" target="_blank">Go!</Link>
+                    </Paragraph>
                     <Heading level="4">Lorem ipsum H4</Heading>
                     <Heading level="5">Lorem ipsum H5</Heading>
                     <Heading level="6">Lorem ipsum H6</Heading>
                 </div>
-            </Card>
-            <Container>
-                <Container direction="column">
+            </div>
+            <div classList={container({})}>
+                <div classList={container({ direction: 'column' })}>
                     <TextInput value={getText()} onUpdate={setText} placeholder="Text..." size="xs" />
                     <TextInput value={getText()} onUpdate={setText} placeholder="Text..." size="s" />
                     <TextInput value={getText()} onUpdate={setText} placeholder="Text..." />
                     <TextInput value={getText()} onUpdate={setText} placeholder="Text..." size="l" />
                     <TextInput value={getText()} onUpdate={setText} placeholder="Text..." size="xl" />
-                    <TextInput value={getText()} onUpdate={setText} label="I am very very long label that goes way long" />
+                    <TextInput
+                        value={getText()}
+                        onUpdate={setText}
+                        label="I am very very long label that goes way long"
+                    />
                     <TextInput value={getText()} onUpdate={setText} label="" />
-                </Container>
-                <Container direction="column">
+                </div>
+                <div classList={container({ direction: 'column' })}>
                     <TextInput value={getText()} onUpdate={setText} label="Label" size="xs" />
                     <TextInput value={getText()} onUpdate={setText} label="Label" size="s" />
                     <TextInput value={getText()} onUpdate={setText} label="Label" />
                     <TextInput value={getText()} onUpdate={setText} label="Label" size="l" />
                     <TextInput value={getText()} onUpdate={setText} label="Label" size="xl" />
-                </Container>
-                <Container direction="column">
+                </div>
+                <div classList={container({ direction: 'column' })}>
                     <TextInput value={getText()} onUpdate={setText} />
                     <TextInput value={getText()} onUpdate={setText} validity="success" />
                     <TextInput value={getText()} onUpdate={setText} validity="error" />
@@ -119,8 +127,8 @@ export function App() {
                     <TextInput value={getText()} onUpdate={setText} readonly />
                     <TextInput value={getText()} onUpdate={setText} validity="success" label="Label" />
                     <TextInput value={getText()} onUpdate={setText} validity="error" label="Label" />
-                </Container>
-                <Container direction="column">
+                </div>
+                <div classList={container({ direction: 'column' })}>
                     <TextInput
                         value={getText()}
                         onUpdate={setText}
@@ -158,9 +166,9 @@ export function App() {
                             </Button>
                         )}
                     />
-                </Container>
-            </Container>
-            <Container wrap>
+                </div>
+            </div>
+            <div classList={container({ wrap: true })}>
                 <Button onClick={() => setN(getN() + 1)}>Default</Button>
                 <Button color="primary">Primary</Button>
                 <Button color="success">Success</Button>
@@ -174,8 +182,8 @@ export function App() {
                 <Button loading color="info">Info</Button>
                 <Button loading color="warn">Warn</Button>
                 <Button loading color="error">Error</Button>
-            </Container>
-            <Container>
+            </div>
+            <div classList={container({})}>
                 <Button mode="pale">Default</Button>
                 <Button mode="pale" color="primary">Primary</Button>
                 <Button mode="pale" color="success">Success</Button>
@@ -189,8 +197,8 @@ export function App() {
                 <Button loading mode="pale" color="info">Info</Button>
                 <Button loading mode="pale" color="warn">Warn</Button>
                 <Button loading mode="pale" color="error">Error</Button>
-            </Container>
-            <Container>
+            </div>
+            <div classList={container({})}>
                 <Button mode="text">Default</Button>
                 <Button mode="text" color="primary">Primary</Button>
                 <Button mode="text" color="success">Success</Button>
@@ -204,54 +212,54 @@ export function App() {
                 <Button loading mode="text" color="info">Info</Button>
                 <Button loading mode="text" color="warn">Warn</Button>
                 <Button loading mode="text" color="error">Error</Button>
-            </Container>
-            <Container>
-                <Button disabled>Disabled</Button>
+            </div>
+            <div>
+                <Button disabled color="primary">Disabled</Button>
                 <Button mode="pale" disabled>Disabled pale</Button>
                 <Button mode="text" disabled>Disabled text</Button>
-            </Container>
+            </div>
 
-            <Container wrap padding="s">
+            <div classList={container({ wrap: true, padding: 's' })}>
                 <Button size="xs">Default</Button>
                 <Button size="xs" color="primary">Primary XS</Button>
                 <Button size="xs" color="success">Success XS</Button>
                 <Button size="xs" color="info">Info XS</Button>
                 <Button size="xs" color="warn">Warn XS</Button>
                 <Button size="xs" color="error">Error XS</Button>
-            </Container>
-            <Container wrap padding="s">
+            </div>
+            <div classList={container({ wrap: true, padding: 's' })}>
                 <Button size="s">Default S</Button>
                 <Button size="s" color="primary">Primary S</Button>
                 <Button size="s" color="success">Success S</Button>
                 <Button size="s" color="info">Info S</Button>
                 <Button size="s" color="warn">Warn S</Button>
                 <Button size="s" color="error">Error S</Button>
-            </Container>
-            <Container wrap padding="s">
+            </div>
+            <div classList={container({ wrap: true, padding: 's' })}>
                 <Button size="m">Default M</Button>
                 <Button size="m" color="primary">Primary M</Button>
                 <Button size="m" color="success">Success M</Button>
                 <Button size="m" color="info">Info M</Button>
                 <Button size="m" color="warn">Warn M</Button>
                 <Button size="m" color="error">Error M</Button>
-            </Container>
-            <Container wrap padding="s">
+            </div>
+            <div classList={container({ wrap: true, padding: 's' })}>
                 <Button size="l">Default L</Button>
                 <Button size="l" color="primary">Primary L</Button>
                 <Button size="l" color="success">Success L</Button>
                 <Button size="l" color="info">Info L</Button>
                 <Button size="l" color="warn">Warn L</Button>
                 <Button size="l" color="error">Error L</Button>
-            </Container>
-            <Container wrap padding="s">
+            </div>
+            <div classList={container({ wrap: true, padding: 's' })}>
                 <Button size="xl">Default XL</Button>
                 <Button size="xl" color="primary">Primary XL</Button>
                 <Button size="xl" color="success">Success XL</Button>
                 <Button size="xl" color="info">Info XL</Button>
                 <Button size="xl" color="warn">Warn XL</Button>
                 <Button size="xl" color="error">Error XL</Button>
-            </Container>
-            <Container>
+            </div>
+            <div classList={container({})}>
                 <Checkbox value={checked()} onUpdate={setChecked} size="xs" color="default"/>
                 <Checkbox value={checked()} onUpdate={setChecked} size="xs" color="primary"/>
                 <Checkbox value={checked()} onUpdate={setChecked} size="xs" color="info"/>
@@ -259,8 +267,8 @@ export function App() {
                 <Checkbox value={checked()} onUpdate={setChecked} size="xs" color="warn"/>
                 <Checkbox value={checked()} onUpdate={setChecked} size="xs" color="error"/>
                 <Checkbox value={checked()} onUpdate={setChecked} size="xs" disabled/>
-            </Container>
-            <Container>
+            </div>
+            <div classList={container({})}>
                 <Checkbox value={checked()} onUpdate={setChecked} size="s" color="default"/>
                 <Checkbox value={checked()} onUpdate={setChecked} size="s" color="primary"/>
                 <Checkbox value={checked()} onUpdate={setChecked} size="s" color="info"/>
@@ -268,8 +276,8 @@ export function App() {
                 <Checkbox value={checked()} onUpdate={setChecked} size="s" color="warn"/>
                 <Checkbox value={checked()} onUpdate={setChecked} size="s" color="error"/>
                 <Checkbox value={checked()} onUpdate={setChecked} size="s" disabled/>
-            </Container>
-            <Container>
+            </div>
+            <div classList={container({})}>
                 <Checkbox value={checked()} onUpdate={setChecked} size="m" color="default"/>
                 <Checkbox value={checked()} onUpdate={setChecked} size="m" color="primary"/>
                 <Checkbox value={checked()} onUpdate={setChecked} size="m" color="info"/>
@@ -277,8 +285,8 @@ export function App() {
                 <Checkbox value={checked()} onUpdate={setChecked} size="m" color="warn"/>
                 <Checkbox value={checked()} onUpdate={setChecked} size="m" color="error"/>
                 <Checkbox value={checked()} onUpdate={setChecked} size="m" disabled/>
-            </Container>
-            <Container>
+            </div>
+            <div classList={container({})}>
                 <Checkbox value={checked()} onUpdate={setChecked} size="l" color="default"/>
                 <Checkbox value={checked()} onUpdate={setChecked} size="l" color="primary"/>
                 <Checkbox value={checked()} onUpdate={setChecked} size="l" color="info"/>
@@ -286,8 +294,8 @@ export function App() {
                 <Checkbox value={checked()} onUpdate={setChecked} size="l" color="warn"/>
                 <Checkbox value={checked()} onUpdate={setChecked} size="l" color="error"/>
                 <Checkbox value={checked()} onUpdate={setChecked} size="l" disabled/>
-            </Container>
-            <Container>
+            </div>
+            <div classList={container({})}>
                 <Checkbox value={checked()} onUpdate={setChecked} size="xl" color="default"/>
                 <Checkbox value={checked()} onUpdate={setChecked} size="xl" color="primary"/>
                 <Checkbox value={checked()} onUpdate={setChecked} size="xl" color="info"/>
@@ -295,9 +303,9 @@ export function App() {
                 <Checkbox value={checked()} onUpdate={setChecked} size="xl" color="warn"/>
                 <Checkbox value={checked()} onUpdate={setChecked} size="xl" color="error"/>
                 <Checkbox value={checked()} onUpdate={setChecked} size="xl" disabled/>
-            </Container>
+            </div>
 
-            <Container>
+            <div classList={container({})}>
                 <Radiobox value={isEven()} onChecked={selectEven} size="xs" color="default"/>
                 <Radiobox value={isOdd()} onChecked={selectOdd} size="xs" color="primary"/>
                 <Radiobox value={isEven()} onChecked={selectEven} size="xs" color="info"/>
@@ -305,8 +313,8 @@ export function App() {
                 <Radiobox value={isEven()} onChecked={selectEven} size="xs" color="warn"/>
                 <Radiobox value={isOdd()} onChecked={selectOdd} size="xs" color="error"/>
                 <Radiobox value={isEven()} onChecked={selectEven} size="xs" disabled/>
-            </Container>
-            <Container>
+            </div>
+            <div classList={container({})}>
                 <Radiobox value={isEven()} onChecked={selectEven} size="s" color="default"/>
                 <Radiobox value={isOdd()} onChecked={selectOdd} size="s" color="primary"/>
                 <Radiobox value={isEven()} onChecked={selectEven} size="s" color="info"/>
@@ -314,8 +322,8 @@ export function App() {
                 <Radiobox value={isEven()} onChecked={selectEven} size="s" color="warn"/>
                 <Radiobox value={isOdd()} onChecked={selectOdd} size="s" color="error"/>
                 <Radiobox value={isEven()} onChecked={selectEven} size="s" disabled/>
-            </Container>
-            <Container>
+            </div>
+            <div classList={container({})}>
                 <Radiobox value={isEven()} onChecked={selectEven} size="m" color="default"/>
                 <Radiobox value={isOdd()} onChecked={selectOdd} size="m" color="primary"/>
                 <Radiobox value={isEven()} onChecked={selectEven} size="m" color="info"/>
@@ -323,8 +331,8 @@ export function App() {
                 <Radiobox value={isEven()} onChecked={selectEven} size="m" color="warn"/>
                 <Radiobox value={isOdd()} onChecked={selectOdd} size="m" color="error"/>
                 <Radiobox value={isEven()} onChecked={selectEven} size="m" disabled/>
-            </Container>
-            <Container>
+            </div>
+            <div classList={container({})}>
                 <Radiobox value={isEven()} onChecked={selectEven} size="l" color="default"/>
                 <Radiobox value={isOdd()} onChecked={selectOdd} size="l" color="primary"/>
                 <Radiobox value={isEven()} onChecked={selectEven} size="l" color="info"/>
@@ -332,8 +340,8 @@ export function App() {
                 <Radiobox value={isEven()} onChecked={selectEven} size="l" color="warn"/>
                 <Radiobox value={isOdd()} onChecked={selectOdd} size="l" color="error"/>
                 <Radiobox value={isEven()} onChecked={selectEven} size="l" disabled/>
-            </Container>
-            <Container>
+            </div>
+            <div classList={container({})}>
                 <Radiobox value={isEven()} onChecked={selectEven} size="xl" color="default"/>
                 <Radiobox value={isOdd()} onChecked={selectOdd} size="xl" color="primary"/>
                 <Radiobox value={isEven()} onChecked={selectEven} size="xl" color="info"/>
@@ -341,7 +349,7 @@ export function App() {
                 <Radiobox value={isEven()} onChecked={selectEven} size="xl" color="warn"/>
                 <Radiobox value={isOdd()} onChecked={selectOdd} size="xl" color="error"/>
                 <Radiobox value={isEven()} onChecked={selectEven} size="xl" disabled/>
-            </Container>
-        </Container>
+            </div>
+        </div>
     );
 }

@@ -28,15 +28,28 @@
     "root": true,
     "rules": {
         "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/ban-types": "off",
         "@typescript-eslint/no-empty-interface": "warn",
         "import/extensions": "off",
         "import/prefer-default-export": "off",
         "arrow-body-style": "off",
+        "consistent-return": "off",
+        "default-case": "off",
         "indent": [
             "error",
-            4
+            4,
+            {
+                "SwitchCase": 1
+            }
         ],
-        "no-confusing-arrow": "off"
+        "max-len": [
+            "error",
+            120
+        ],
+        "no-confusing-arrow": "off",
+        "no-continue": "off",
+        "no-restricted-syntax": "off",
+        "no-shadow": "off"
     },
     "overrides": [
         {

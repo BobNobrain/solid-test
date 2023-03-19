@@ -9,7 +9,7 @@ const dist = path.resolve(__dirname, '..', 'dist');
 /** @type {import('webpack').Configuration} */
 module.exports = {
     mode: 'development',
-    entry: './src/ui/index.tsx',
+    entry: './src/gallery/index.tsx',
     module: {
         rules: [
             {
@@ -52,7 +52,7 @@ module.exports = {
 
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/ui/index.html',
+            template: './src/gallery/index.html',
         }),
         new ForkTsCheckerWebpackPlugin({
             async: true,

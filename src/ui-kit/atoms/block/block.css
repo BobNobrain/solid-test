@@ -1,0 +1,62 @@
+.block {
+    height: var(--block-size);
+    background-color: rgba(var(--color-rgb), var(--block-bg-opacity, 1));
+}
+
+.square {
+    width: var(--block-size);
+}
+
+.color-default {
+    composes: default from "../../colors.css";
+}
+.color-primary {
+    composes: primary from "../../colors.css";
+}
+.color-success {
+    composes: success from "../../colors.css";
+}
+.color-info {
+    composes: info from "../../colors.css";
+}
+.color-warn {
+    composes: warn from "../../colors.css";
+}
+.color-error {
+    composes: error from "../../colors.css";
+}
+
+.size-xs {
+    --block-size: 24px;
+}
+.size-s {
+    --block-size: 28px;
+}
+.size-m {
+    --block-size: 36px;
+}
+.size-l {
+    --block-size: 48px;
+}
+.size-xl {
+    --block-size: 64px;
+}
+
+.opacity-0 {
+    --block-bg-opacity: 0;
+}
+.opacity-5 {
+    --block-bg-opacity: 5;
+}
+.opacity-10 {
+    --block-bg-opacity: 10;
+}
+.opacity-25 {
+    --block-bg-opacity: 25;
+}
+.opacity-50 {
+    --block-bg-opacity: 50;
+}
+.opacity-75 {
+    --block-bg-opacity: 75;
+}

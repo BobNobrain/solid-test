@@ -1,0 +1,61 @@
+.color-default {
+    color: var(--text-main);
+}
+.color-inverse {
+    color: var(--text-inverse);
+}
+.color-primary {
+    color: rgb(var(--primary-rgb));
+}
+.color-success {
+    color: rgb(var(--success-rgb));
+}
+.color-info {
+    color: rgb(var(--info-rgb));
+}
+.color-warn {
+    color: rgb(var(--warn-rgb));
+}
+.color-error {
+    color: rgb(var(--error-rgb));
+}
+
+.size-xs {
+    composes: text-xs from "../../typography.css";
+}
+.size-s {
+    composes: text-s from "../../typography.css";
+}
+.size-m {
+    composes: text-m from "../../typography.css";
+}
+.size-l {
+    composes: text-l from "../../typography.css";
+}
+.size-xl {
+    composes: text-xl from "../../typography.css";
+}
+
+.weight-bold {
+    composes: weight-bold from "../../typography.css";
+}
+.weight-normal {
+    composes: weight-normal from "../../typography.css";
+}
+.weight-light {
+    composes: weight-light from "../../typography.css";
+}
+
+.style-italic {
+    font-style: italic;
+}
+.style-normal {
+    font-style: normal;
+}
+
+.dim {
+    opacity: 0.5;
+}
+.non-dim {
+    opacity: 1;
+}
