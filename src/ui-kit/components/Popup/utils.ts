@@ -1,136 +1,96 @@
-// import { createEffect, createSignal, onCleanup } from 'solid-js';
-// import {
-//     HorizontalAlignment, PlacementSide, PopupPlacement, PopupPosition, PositionResolver, VerticalAlignment,
-// } from './types';
+import { PopupPlacementConfiguration, PopupPlacement } from './placement';
 
-// export interface TargetResolverOptions {
-//     placements?: PopupPlacement[];
-//     minWidth?: number;
-//     minHeight?: number;
-// }
+export const defaultPlacements: PopupPlacement[] = [
+    'bottom-left', 'bottom-center', 'bottom-right',
+    'top-left', 'top-center', 'top-right',
+    'left-top', 'left-bottom', 'left-center',
+    'right-top', 'right-bottom', 'right-center',
+];
 
-// export const defaultPlacements: PopupPlacement[] = [
-//     'bottom-left', 'bottom-center', 'bottom-right',
-//     'top-left', 'top-center', 'top-right',
-//     'left-top', 'left-bottom', 'left-center',
-//     'right-top', 'right-bottom', 'right-center',
-// ];
+interface PlacePopupOptions {
+    target: DOMRect;
+    viewport: DOMRect;
+    placement: PopupPlacementConfiguration;
+}
 
-// function calculateHorizontalAlignment(
-//     target: DOMRect,
-//     alignment: HorizontalAlignment,
-// ): PopupPosition {
-//     switch (alignment) {
-//         case 'left':
-//             return { left: target.left };
+export function getPopupAvailableSpace({
+    target,
+    viewport,
+    placement,
+}: PlacePopupOptions): DOMRect {
+    const distances = {
+        toTop: target.top - viewport.top,
+        toBottom: viewport.bottom - target.bottom,
+        toLeft: target.left - viewport.left,
+        toRight: viewport.right - target.right,
+    };
 
-//         case 'right':
-//             return { right: target.right };
+    const spaceForPopup = {
+        left: viewport.left,
+        top: viewport.top,
+        width: viewport.width,
+        height: viewport.height,
+    };
 
-//         case 'center':
-//             return { left: target.left + target.width / 2 };
+    switch (placement.anchor) {
+        case 'top':
+            spaceForPopup.height = distances.toTop;
+            spaceForPopup.top = viewport.top;
+            break;
 
-//         case 'stretch':
-//             return { left: target.left, right: target.right };
-//     }
-// }
-// function calculateVerticalAlignment(
-//     target: DOMRect,
-//     alignment: VerticalAlignment,
-// ): PopupPosition {
-//     switch (alignment) {
-//         case 'top':
-//             return { top: target.top };
+        case 'bottom':
+            spaceForPopup.height = distances.toBottom;
+            spaceForPopup.top = target.bottom;
+            break;
 
-//         case 'bottom':
-//             return { bottom: target.bottom };
+        case 'left':
+            spaceForPopup.width = distances.toLeft;
+            spaceForPopup.left = viewport.left;
+            break;
 
-//         case 'center':
-//             return { top: target.top + target.height / 2 };
+        case 'right':
+            spaceForPopup.width = distances.toRight;
+            spaceForPopup.left = target.right;
+            break;
+    }
 
-//         case 'stretch':
-//             return { top: target.top, bottom: target.bottom };
-//     }
-// }
+    const isVertical = placement.anchor === 'top' || placement.anchor === 'bottom';
 
-// function calculatePlacement(target: DOMRect, side: PlacementSide, gap: number): PopupPosition {
-//     switch (side) {
-//         case 'top':
-//             return { bottom: target.bottom + target.height + gap };
+    switch (placement.alignment) {
+        case 'top':
+            spaceForPopup.top = target.top;
+            spaceForPopup.height = target.height + distances.toBottom;
+            break;
 
-//         case 'bottom':
-//             return { top: target.top + target.height + gap };
+        case 'bottom':
+            spaceForPopup.top = viewport.top;
+            spaceForPopup.height = target.height + distances.toTop;
+            break;
 
-//         case 'left':
-//             return { right: target.right + target.width + gap };
+        case 'left':
+            spaceForPopup.left = target.left;
+            spaceForPopup.width = target.width + distances.toRight;
+            break;
 
-//         case 'right':
-//             return { left: target.left + target.width + gap };
-//     }
-// }
+        case 'right':
+            spaceForPopup.left = viewport.left;
+            spaceForPopup.width = target.width + distances.toLeft;
+            break;
 
-// export function placePopup(target: DOMRect, placement: PopupPlacement, gap: number): PopupPosition {
-//     const [main, alignment] = placement.split('-') as [PlacementSide, HorizontalAlignment | VerticalAlignment];
+        case 'center':
+            if (isVertical) {
+                spaceForPopup.left = viewport.left;
+                spaceForPopup.width = viewport.width;
+            } else {
+                spaceForPopup.top = viewport.top;
+                spaceForPopup.height = viewport.height;
+            }
+    }
 
-//     const result: PopupPosition = {};
-
-//     Object.assign(calculatePlacement(target, main, gap));
-//     if (main === 'top' || main === 'bottom') {
-//         Object.assign(calculateHorizontalAlignment(target, alignment as HorizontalAlignment));
-//     } else {
-//         Object.assign(calculateVerticalAlignment(target, alignment as VerticalAlignment));
-//     }
-
-//     return result;
-// }
-
-// export function createTargetResolver(el: HTMLElement, options: TargetResolverOptions): PositionResolver {
-//     const [getTargetBounds, setTargetBounds] = createSignal<DOMRect>(el.getBoundingClientRect());
-
-//     createEffect(() => {
-//         const listener = () => {
-//             const target = el.getBoundingClientRect();
-//             setTargetBounds((old) => {
-//                 if (old.left === target.left
-//                     && old.right === target.right
-//                     && old.bottom === target.bottom
-//                     && old.top === target.top
-//                 ) {
-//                     return old;
-//                 }
-
-//                 return target;
-//             });
-//         };
-
-//         window.addEventListener('resize', listener);
-//         window.addEventListener('scroll', listener, { passive: true });
-
-//         onCleanup(() => {
-//             window.removeEventListener('resize', listener);
-//             window.removeEventListener('scroll', listener);
-//         });
-//     });
-
-//     const {
-//         placements = defaultPlacements,
-//         minHeight = 0,
-//         minWidth = 0,
-//     } = options;
-
-//     return (contentBounds) => {
-//         const target = getTargetBounds();
-
-//         for (const p of placements) {
-//             const result = placePopup(target, contentBounds, p);
-//             const { width, height } = getSize(result);
-//             if (width < minWidth || height < minHeight) {
-//                 continue;
-//             }
-
-//             return result;
-//         }
-
-//         return placePopup(target, contentBounds, placements[0] ?? defaultPlacements[0]);
-//     };
-// }
+    return DOMRect.fromRect({
+        x: spaceForPopup.left,
+        y: spaceForPopup.top,
+        width: spaceForPopup.width,
+        height: spaceForPopup.height,
+    });
+}

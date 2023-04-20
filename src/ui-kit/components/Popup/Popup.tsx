@@ -1,75 +1,102 @@
-// import {
-//     createEffect,
-//     createMemo,
-//     createSignal,
-//     onCleanup,
-//     ParentComponent,
-// } from 'solid-js';
-// import { Portal } from 'solid-js/web';
-// import styles from './Popup.css';
-// import { PopupPlacement } from './types';
-// import { defaultPlacements } from './utils';
+import { createMemo, JSX, ParentComponent } from 'solid-js';
+import { Portal } from 'solid-js/web';
 
-// export interface PopupProps {
-//     target: HTMLElement;
-//     placements?: PopupPlacement[];
-// }
+import { createBoundsTracker } from '../../utils/createBoundsTracker';
+import { createViewportTracker } from '../../utils/createViewportTracker';
 
-// export const Popup: ParentComponent<PopupProps> = (props) => {
-//     let wrapperRef!: HTMLDivElement;
+import { PopupPlacement } from './types';
+import { defaultPlacements, getPopupAvailableSpace } from './utils';
+import { getPlacementConfiguration } from './placement';
 
-//     const [getTargetBounds, setTargetBounds] = createSignal<DOMRect>(props.target.getBoundingClientRect());
+import styles from './Popup.css';
 
-//     createEffect(() => {
-//         const listener = () => {
-//             const target = props.target.getBoundingClientRect();
-//             setTargetBounds((old) => {
-//                 if (old.left === target.left
-//                     && old.right === target.right
-//                     && old.bottom === target.bottom
-//                     && old.top === target.top
-//                 ) {
-//                     return old;
-//                 }
+export interface PopupProps {
+    target: HTMLElement;
+    placements?: PopupPlacement[];
 
-//                 return target;
-//             });
-//         };
+    minWidth?: number;
+    minHeight?: number;
+}
 
-//         window.addEventListener('resize', listener);
-//         window.addEventListener('scroll', listener, { passive: true });
+export const Popup: ParentComponent<PopupProps> = (props) => {
+    let wrapperRef!: HTMLDivElement;
 
-//         onCleanup(() => {
-//             window.removeEventListener('resize', listener);
-//             window.removeEventListener('scroll', listener);
-//         });
-//     });
+    const getTargetBounds = createBoundsTracker(() => props.target);
+    const getContentBounds = createBoundsTracker(() => wrapperRef);
+    const getViewport = createViewportTracker();
 
-//     const dims = createMemo(() => {
-//         const target = getTargetBounds();
-//         const placements = props.placements ?? defaultPlacements;
-//         let result;
+    const placement = createMemo(() => {
+        const target = getTargetBounds();
+        const viewport = getViewport();
+        const content = getContentBounds();
+        const placements = props.placements ?? defaultPlacements;
 
-//         for (const p of placements) {
-//             const result = placePopup(target, contentBounds, p);
-//             const { width, height } = getSize(result);
-//             if (width < minWidth || height < minHeight) {
-//                 continue;
-//             }
+        const minWidth = props.minWidth || content.width;
+        const minHeight = props.minHeight || content.height;
 
-//             return result;
-//         }
+        for (const p of placements) {
+            const placementConfig = getPlacementConfiguration(p);
+            const available = getPopupAvailableSpace({
+                target,
+                viewport,
+                placement: placementConfig,
+            });
 
-//         return Object.fromEntries(Object.entries(dimensions).map(([key, value]) => [key, `${value}px`]));
-//     });
+            if (available.width < minWidth || available.height < minHeight) {
+                continue;
+            }
 
-//     return (
-//         <Portal>
-//             <div class={styles.positioner} style={dims()}>
-//                 <div class={styles.wrapper} ref={wrapperRef}>
-//                     {props.children}
-//                 </div>
-//             </div>
-//         </Portal>
-//     );
-// };
+            return { availableSpace: available, placement: p, placementConfig };
+        }
+
+        return {
+            availableSpace: getPopupAvailableSpace({
+                target,
+                viewport,
+                placement: getPlacementConfiguration(placements[0]),
+            }),
+            placement: placements[0],
+            placementConfig: getPlacementConfiguration(placements[0]),
+        };
+    });
+
+    const dims = createMemo<JSX.CSSProperties>(() => {
+        const {
+            left,
+            top,
+            width,
+            height,
+        } = placement().availableSpace;
+
+        return {
+            left: `${left}px`,
+            top: `${top}px`,
+            width: `${width}px`,
+            height: `${height}px`,
+        };
+    });
+
+    const classList = createMemo(() => {
+        const { alignment, anchor } = placement().placementConfig;
+        const isVertical = anchor === 'top' || anchor === 'bottom';
+
+        return {
+            [styles[`anchor-${anchor}`]]: true,
+            [styles[`orientation-${isVertical ? 'vertical' : 'horizontal'}`]]: true,
+            [styles[`align-${alignment}`]]: true,
+        };
+    });
+
+    return (
+        <Portal>
+            <div class={styles.positioner} classList={classList()} style={dims()}>
+                <div
+                    ref={wrapperRef}
+                    class={styles.wrapper}
+                >
+                    {props.children}
+                </div>
+            </div>
+        </Portal>
+    );
+};

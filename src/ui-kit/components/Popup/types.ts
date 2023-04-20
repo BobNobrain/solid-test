@@ -7,10 +7,8 @@ export interface PopupPosition {
     height?: number;
 }
 
-export type PositionResolver = (contentBounds: DOMRect) => PopupPosition;
-
-export type HorizontalAlignment = 'left' | 'right' | 'center' | 'stretch';
-export type VerticalAlignment = 'top' | 'bottom' | 'center' | 'stretch';
+export type HorizontalAlignment = 'left' | 'right' | 'center';
+export type VerticalAlignment = 'top' | 'bottom' | 'center';
 export type PlacementSide = 'bottom' | 'top' | 'left' | 'right';
 
 export type PopupPlacement =

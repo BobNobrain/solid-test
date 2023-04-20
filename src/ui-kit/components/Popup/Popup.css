@@ -3,5 +3,42 @@
     display: flex;
     overflow: visible;
 }
+/* .wrapper {} */
 
-.wrapper {}
+.orientation-horizontal {
+    flex-flow: row nowrap;
+}
+.orientation-vertical {
+    flex-flow: column nowrap;
+}
+
+.anchor-top {
+    justify-content: flex-end;
+}
+.anchor-bottom {
+    justify-content: flex-start;
+}
+.anchor-left {
+    justify-content: flex-end;
+}
+.anchor-right {
+    justify-content: flex-start;
+}
+
+.align-left {
+    align-items: flex-start;
+}
+.align-right {
+    align-items: flex-end;
+}
+.align-top {
+    align-items: flex-start;
+}
+.align-bottom {
+    align-items: flex-end;
+}
+
+.align-center {
+    align-items: center;
+}
+
