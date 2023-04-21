@@ -11,13 +11,20 @@ interface PlacePopupOptions {
     target: DOMRect;
     viewport: DOMRect;
     placement: PopupPlacementConfiguration;
+    gap: number;
 }
 
-export function getPopupAvailableSpace({
+interface PlacePopupResult {
+    bounds: DOMRect; // all available space
+    container: DOMRect; // all available space but constrained by length of target's anchor side
+}
+
+export function placePopup({
     target,
     viewport,
     placement,
-}: PlacePopupOptions): DOMRect {
+    gap,
+}: PlacePopupOptions): PlacePopupResult {
     const distances = {
         toTop: target.top - viewport.top,
         toBottom: viewport.bottom - target.bottom,
@@ -87,10 +94,27 @@ export function getPopupAvailableSpace({
             }
     }
 
-    return DOMRect.fromRect({
+    const constrainedByAnchorSide = { ...spaceForPopup };
+    if (isVertical) {
+        constrainedByAnchorSide.left = target.left;
+        constrainedByAnchorSide.width = target.width;
+    } else {
+        constrainedByAnchorSide.top = target.top;
+        constrainedByAnchorSide.height = target.height;
+    }
+
+    const bounds = DOMRect.fromRect({
         x: spaceForPopup.left,
         y: spaceForPopup.top,
         width: spaceForPopup.width,
         height: spaceForPopup.height,
     });
+    const container = DOMRect.fromRect({
+        x: constrainedByAnchorSide.left,
+        y: constrainedByAnchorSide.top,
+        width: constrainedByAnchorSide.width,
+        height: constrainedByAnchorSide.height,
+    });
+
+    return { bounds, container };
 }

@@ -1,44 +1,75 @@
-.positioner {
+.bounder {
     position: absolute;
     display: flex;
     overflow: visible;
 }
-/* .wrapper {} */
 
-.orientation-horizontal {
+.bounder.orientation-horizontal {
     flex-flow: row nowrap;
 }
-.orientation-vertical {
+.bounder.orientation-vertical {
     flex-flow: column nowrap;
 }
 
-.anchor-top {
+.bounder.anchor-top {
     justify-content: flex-end;
 }
-.anchor-bottom {
+.bounder.anchor-bottom {
     justify-content: flex-start;
 }
-.anchor-left {
+.bounder.anchor-left {
     justify-content: flex-end;
 }
-.anchor-right {
+.bounder.anchor-right {
     justify-content: flex-start;
 }
 
-.align-left {
+.bounder.align-left {
     align-items: flex-start;
 }
-.align-right {
+.bounder.align-right {
     align-items: flex-end;
 }
-.align-top {
+.bounder.align-top {
     align-items: flex-start;
 }
-.align-bottom {
+.bounder.align-bottom {
     align-items: flex-end;
 }
 
-.align-center {
+.bounder.align-center {
     align-items: center;
 }
 
+.content-wrapper {
+    display: flex;
+}
+
+.bounder.orientation-vertical > .content-wrapper {
+    flex-flow: column nowrap;
+}
+
+.bounder.constrain-shorter.orientation-horizontal > .content-wrapper {
+    height: max-content;
+    max-height: 100%;
+}
+.bounder.constrain-shorter.orientation-vertical > .content-wrapper {
+    width: max-content;
+    max-width: 100%;
+}
+
+.bounder.constrain-longer.orientation-horizontal > .content-wrapper {
+    height: max-content;
+    min-height: 100%;
+}
+.bounder.constrain-longer.orientation-vertical > .content-wrapper {
+    width: max-content;
+    min-width: 100%;
+}
+
+.bounder.constrain-exact.orientation-horizontal > .content-wrapper {
+    height: 100%;
+}
+.bounder.constrain-exact.orientation-vertical > .content-wrapper {
+    width: 100%;
+}

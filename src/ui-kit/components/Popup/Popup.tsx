@@ -5,7 +5,7 @@ import { createBoundsTracker } from '../../utils/createBoundsTracker';
 import { createViewportTracker } from '../../utils/createViewportTracker';
 
 import { PopupPlacement } from './types';
-import { defaultPlacements, getPopupAvailableSpace } from './utils';
+import { defaultPlacements, placePopup } from './utils';
 import { getPlacementConfiguration } from './placement';
 
 import styles from './Popup.css';
@@ -16,13 +16,15 @@ export interface PopupProps {
 
     minWidth?: number;
     minHeight?: number;
+    gap?: number;
+    lengthConstraint?: 'shorter' | 'longer' | 'exact' | 'none';
 }
 
 export const Popup: ParentComponent<PopupProps> = (props) => {
     let wrapperRef!: HTMLDivElement;
 
-    const getTargetBounds = createBoundsTracker(() => props.target);
-    const getContentBounds = createBoundsTracker(() => wrapperRef);
+    const [getTargetBounds] = createBoundsTracker(() => props.target);
+    const [getContentBounds] = createBoundsTracker(() => wrapperRef);
     const getViewport = createViewportTracker();
 
     const placement = createMemo(() => {
@@ -36,37 +38,44 @@ export const Popup: ParentComponent<PopupProps> = (props) => {
 
         for (const p of placements) {
             const placementConfig = getPlacementConfiguration(p);
-            const available = getPopupAvailableSpace({
+            const { bounds, container } = placePopup({
                 target,
                 viewport,
                 placement: placementConfig,
+                gap: props.gap ?? 0,
             });
 
-            if (available.width < minWidth || available.height < minHeight) {
+            if (bounds.width < minWidth || bounds.height < minHeight) {
                 continue;
             }
 
-            return { availableSpace: available, placement: p, placementConfig };
+            return {
+                bounds,
+                container,
+                placement: p,
+                placementConfig,
+            };
         }
 
         return {
-            availableSpace: getPopupAvailableSpace({
+            ...placePopup({
                 target,
                 viewport,
                 placement: getPlacementConfiguration(placements[0]),
+                gap: props.gap ?? 0,
             }),
             placement: placements[0],
             placementConfig: getPlacementConfiguration(placements[0]),
         };
     });
 
-    const dims = createMemo<JSX.CSSProperties>(() => {
+    const bounderCss = createMemo<JSX.CSSProperties>(() => {
         const {
             left,
             top,
             width,
             height,
-        } = placement().availableSpace;
+        } = placement().container;
 
         return {
             left: `${left}px`,
@@ -75,8 +84,7 @@ export const Popup: ParentComponent<PopupProps> = (props) => {
             height: `${height}px`,
         };
     });
-
-    const classList = createMemo(() => {
+    const bounderClassList = createMemo(() => {
         const { alignment, anchor } = placement().placementConfig;
         const isVertical = anchor === 'top' || anchor === 'bottom';
 
@@ -84,15 +92,20 @@ export const Popup: ParentComponent<PopupProps> = (props) => {
             [styles[`anchor-${anchor}`]]: true,
             [styles[`orientation-${isVertical ? 'vertical' : 'horizontal'}`]]: true,
             [styles[`align-${alignment}`]]: true,
+            [styles[`constrain-${props.lengthConstraint ?? 'none'}`]]: true,
         };
     });
 
     return (
         <Portal>
-            <div class={styles.positioner} classList={classList()} style={dims()}>
+            <div
+                class={styles.bounder}
+                classList={bounderClassList()}
+                style={bounderCss()}
+            >
                 <div
                     ref={wrapperRef}
-                    class={styles.wrapper}
+                    class={styles['content-wrapper']}
                 >
                     {props.children}
                 </div>

@@ -18,7 +18,7 @@ export const PopupStory: StoryDescription<PopupStoryControls> = {
     component: (props) => {
         let target!: HTMLDivElement;
 
-        const placements: PopupPlacement[] = ['top-left'];
+        const placements: PopupPlacement[] = ['top-center'];
 
         return (
             <div style="padding-top: 200px; padding-left: 300px;">
@@ -26,9 +26,10 @@ export const PopupStory: StoryDescription<PopupStoryControls> = {
                 <Popup
                     target={target}
                     placements={placements}
+                    lengthConstraint="longer"
                 >
-                    <div style="border: 1px green solid; width: 300px; height: 250px">
-                        I am the popup content!
+                    <div style="border: 1px green solid">
+                        :)
                     </div>
                 </Popup>
             </div>
