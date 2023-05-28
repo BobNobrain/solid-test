@@ -2,6 +2,7 @@
     position: absolute;
     display: flex;
     overflow: visible;
+    pointer-events: none;
 }
 
 .bounder.orientation-horizontal {
@@ -43,6 +44,10 @@
 
 .content-wrapper {
     display: flex;
+    pointer-events: none;
+}
+.content-wrapper > * {
+    pointer-events: auto;
 }
 
 .bounder.orientation-vertical > .content-wrapper {

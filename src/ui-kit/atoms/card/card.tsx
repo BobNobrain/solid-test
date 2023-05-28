@@ -2,7 +2,6 @@ import { Atom } from '../types';
 import styles from './card.css';
 
 interface CardState {
-    tag?: string;
     elevated?: boolean;
 }
 

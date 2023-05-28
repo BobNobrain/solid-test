@@ -1,28 +1,11 @@
-.wrapper {
-    display: flex;
-    align-items: center;
-
-    padding: 0 var(--size-0-5);
-
-    border: 2px solid var(--border-color-light);
-    border-radius: var(--border-radius);
-    cursor: text;
-
-    background-color: #f3f3f3;
+.field {
+    /* --fixed-container-border-color: rgb(var(--primary-rgb)); */
 }
 
-.wrapper:focus-within {
-    background-color: #f7f7f7;
-    border-color: rgb(var(--primary-light-rgb));
-}
-
-.validity-success {
-    border-color: rgb(var(--success-rgb));
-    background-color: rgba(var(--success-rgb), 0.07);
-}
-.validity-error {
-    border-color: rgb(var(--error-rgb));
-    background-color: rgba(var(--error-rgb), 0.03);
+.field:focus-within,
+.field.active {
+    background-color: var(--bg-float);
+    --fixed-container-border-color: rgb(var(--primary-rgb));
 }
 
 .disabled {
@@ -60,7 +43,8 @@
     overflow: hidden;
     max-width: calc(100% + 4px);
 }
-.wrapper:focus-within .label {
+.field:focus-within .label,
+.field.active .label {
     background-color: rgb(var(--primary-rgb));
     color: var(--text-inverse);
 }
@@ -93,4 +77,14 @@
 .label-validity-success {
     background-color: rgb(var(--success-rgb));
     color: var(--text-inverse);
+}
+
+.behavior-default {
+    cursor: default;
+}
+.behavior-clickable {
+    cursor: pointer;
+}
+.behavior-text {
+    cursor: text;
 }

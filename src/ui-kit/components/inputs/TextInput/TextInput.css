@@ -17,31 +17,21 @@
 
 .size-xs {
     --input-padding: var(--size-0-5);
-    line-height: 12px;
-    font-size: 10px;
     height: 20px;
 }
 .size-s {
     --input-padding: var(--size-1);
-    line-height: 16px;
-    font-size: var(--size-2-5);
     height: 24px;
 }
 .size-m {
     --input-padding: var(--size-1-5);
-    line-height: 16px;
-    font-size: var(--size-3);
     height: 32px;
 }
 .size-l {
     --input-padding: var(--size-2);
-    line-height: 28px;
-    font-size: var(--size-3-5);
     height: 44px;
 }
 .size-xl {
     --input-padding: var(--size-1-5);
-    line-height: 36px;
-    font-size: var(--size-4);
     height: 60px;
 }

@@ -1,5 +1,6 @@
 import { text } from '../../atoms/text/text';
-import { Color, FontWeight, Size } from '../../types';
+import { Color, FontWeight } from '../../types';
+import type { Size } from '../../utils/Size';
 
 export interface StyleableTextProps {
     color?: Color;

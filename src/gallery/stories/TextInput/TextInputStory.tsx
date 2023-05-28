@@ -1,6 +1,6 @@
 import { createSignal } from 'solid-js';
 import { TextInput } from '../../../ui-kit/components/inputs/TextInput/TextInput';
-import { Size } from '../../../ui-kit/types';
+import { Size } from '../../../ui-kit/utils/Size';
 import { checkboxControl } from '../../components/controls/CheckboxControl';
 import { sizeRadioControl } from '../../components/controls/SizeRadioControl';
 import { textControl } from '../../components/controls/TextControl';
@@ -32,7 +32,7 @@ export const TextInputStory: StoryDescription<TextInputStoryControls> = {
                 label={props.controls.noLabel ? undefined : props.controls.label}
                 placeholder={props.controls.placeholder}
                 disabled={props.controls.disabled}
-                size={props.controls.size}
+                outerSize={props.controls.size}
             />
         );
     },

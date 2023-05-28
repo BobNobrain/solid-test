@@ -1,5 +1,5 @@
 import { ParentComponent } from 'solid-js';
-import { Size } from '../../types';
+import type { Size } from '../../utils/Size';
 import styles from './Sidebar.css';
 
 export interface SidebarProps {

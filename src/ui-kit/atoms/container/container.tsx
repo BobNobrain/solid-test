@@ -1,4 +1,4 @@
-import { Size } from '../../types';
+import type { Size } from '../../utils/Size';
 import { Atom } from '../types';
 import styles from './container.css';
 

@@ -4,31 +4,30 @@ import { Portal } from 'solid-js/web';
 import { createBoundsTracker } from '../../utils/createBoundsTracker';
 import { createViewportTracker } from '../../utils/createViewportTracker';
 
-import { PopupPlacement } from './types';
+import { PopupLengthConstraint, PopupPlacement } from './types';
 import { defaultPlacements, placePopup } from './utils';
 import { getPlacementConfiguration } from './placement';
 
 import styles from './Popup.css';
 
 export interface PopupProps {
-    target: HTMLElement;
+    target: DOMRect;
     placements?: PopupPlacement[];
 
     minWidth?: number;
     minHeight?: number;
     gap?: number;
-    lengthConstraint?: 'shorter' | 'longer' | 'exact' | 'none';
+    lengthConstraint?: PopupLengthConstraint;
 }
 
 export const Popup: ParentComponent<PopupProps> = (props) => {
     let wrapperRef!: HTMLDivElement;
 
-    const [getTargetBounds] = createBoundsTracker(() => props.target);
     const [getContentBounds] = createBoundsTracker(() => wrapperRef);
     const getViewport = createViewportTracker();
 
     const placement = createMemo(() => {
-        const target = getTargetBounds();
+        const target = props.target;
         const viewport = getViewport();
         const content = getContentBounds();
         const placements = props.placements ?? defaultPlacements;

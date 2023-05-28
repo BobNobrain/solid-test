@@ -1,0 +1,104 @@
+.fixed-container {
+    display: flex;
+    border: 2px solid var(--fixed-container-border-color);
+    border-radius: var(--border-radius);
+
+    height: var(--fixed-container-outer-size);
+    padding: calc((var(--fixed-container-outer-size) - var(--fixed-container-inner-size)) / 2 - 2px);
+}
+
+.halign-start {
+    justify-content: flex-start;
+}
+.halign-end {
+    justify-content: flex-end;
+}
+.halign-center {
+    justify-content: center;
+}
+.halign-stretch {
+    justify-content: stretch;
+}
+
+.valign-start {
+    align-items: flex-start;
+}
+.valign-end {
+    align-items: flex-end;
+}
+.valign-center {
+    align-items: center;
+}
+.valign-stretch {
+    align-items: stretch;
+}
+
+.border-default {
+    --fixed-container-border-color: var(--border-color-light);
+}
+.border-primary {
+    --fixed-container-border-color: rgb(var(--primary-light-rgb));
+}
+.border-info {
+    --fixed-container-border-color: rgb(var(--info-light-rgb));
+}
+.border-success {
+    --fixed-container-border-color: rgb(var(--success-light-rgb));
+}
+.border-error {
+    --fixed-container-border-color: rgb(var(--error-light-rgb));
+}
+.border-warn {
+    --fixed-container-border-color: rgb(var(--warn-light-rgb));
+}
+
+.bg-default {
+    background-color: #f3f3f3;
+}
+.bg-primary {
+    background-color: color-mix(in hsl, rgb(var(--primary-rgb)) 15%, #f3f3f3);
+}
+.bg-info {
+    background-color: color-mix(in hsl, rgb(var(--info-rgb)) 15%, #f3f3f3);
+}
+.bg-success {
+    background-color: color-mix(in hsl, rgb(var(--success-rgb)) 20%, #f3f3f3);
+}
+.bg-error {
+    background-color: color-mix(in hsl, rgb(var(--error-rgb)) 15%, #f3f3f3);
+}
+.bg-warn {
+    background-color: color-mix(in hsl, rgb(var(--warn-rgb)) 20%, #f3f3f3);
+}
+
+.outer-size-xs {
+    --fixed-container-outer-size: var(--size-xs);
+}
+.outer-size-s {
+    --fixed-container-outer-size: var(--size-s);
+}
+.outer-size-m {
+    --fixed-container-outer-size: var(--size-m);
+}
+.outer-size-l {
+    --fixed-container-outer-size: var(--size-l);
+}
+.outer-size-xl {
+    --fixed-container-outer-size: var(--size-xl);
+}
+
+.inner-size-xs {
+    --fixed-container-inner-size: var(--size-xs);
+}
+.inner-size-s {
+    --fixed-container-inner-size: var(--size-s);
+}
+.inner-size-m {
+    --fixed-container-inner-size: var(--size-m);
+}
+.inner-size-l {
+    --fixed-container-inner-size: var(--size-l);
+}
+.inner-size-xl {
+    --fixed-container-inner-size: var(--size-xl);
+}

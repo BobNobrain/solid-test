@@ -1,7 +1,8 @@
 import { Component, createMemo, Show } from 'solid-js';
 import { IconCheckmark } from '../../../../icons/IconCheckmark';
 import { IconIndeterminate } from '../../../../icons/IconIndeterminate';
-import { Color, Size } from '../../../../types';
+import { Color } from '../../../../types';
+import { Size } from '../../../../utils/Size';
 import styles from './Check.css';
 
 export interface CheckProps {

@@ -1,0 +1,31 @@
+.icon {
+    fill: currentColor;
+
+    transition: all 0.2s ease-in-out;
+
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.color-icon {
+    color: var(--icon-color);
+}
+
+.color-default {
+    color: rgb(var(--default-rgb));
+}
+.color-primary {
+    color: rgb(var(--primary-rgb));
+}
+.color-success {
+    color: rgb(var(--success-rgb));
+}
+.color-info {
+    color: rgb(var(--info-rgb));
+}
+.color-error {
+    color: rgb(var(--error-rgb));
+}
+.color-warn {
+    color: rgb(var(--warn-rgb));
+}

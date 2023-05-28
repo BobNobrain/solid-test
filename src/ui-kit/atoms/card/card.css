@@ -1,5 +1,10 @@
 .card {
-    border-radius: var(--size-2);
-    background-color: #f7f7f7;
+    border-radius: var(--border-radius);
+    background-color: var(--bg-float);
     width: 100%;
+}
+
+.elevated {
+    /* box-shadow: rgba(var(--shadow-rgb), 0.1) 0px 4px 12px; */
+    box-shadow: rgba(var(--shadow-rgb), 0.1) 1px 1px 1px, rgba(var(--shadow-rgb), 0.1) 0 0 4px;
 }

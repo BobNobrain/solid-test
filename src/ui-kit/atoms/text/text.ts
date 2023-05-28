@@ -2,8 +2,9 @@ import {
     Color,
     FontStyle,
     FontWeight,
-    Size,
 } from '../../types';
+import type { Size } from '../../utils/Size';
+import { Atom } from '../types';
 import styles from './text.css';
 
 interface TextState {
@@ -14,13 +15,13 @@ interface TextState {
     dim?: boolean;
 }
 
-export function text(props: TextState): Record<string, boolean | undefined> {
+export const text: Atom<TextState> = (state) => {
     return {
         [styles.text]: true,
-        [styles[`color-${props.color}`]]: Boolean(props.color),
-        [styles[`size-${props.size}`]]: Boolean(props.size),
-        [styles[`weight-${props.weight}`]]: Boolean(props.weight),
-        [styles[`style-${props.style}`]]: Boolean(props.style),
-        [styles[`dim-${props.dim}`]]: props.dim !== undefined,
+        [styles[`color-${state.color}`]]: Boolean(state.color),
+        [styles[`size-${state.size}`]]: Boolean(state.size),
+        [styles[`weight-${state.weight}`]]: Boolean(state.weight),
+        [styles[`style-${state.style}`]]: Boolean(state.style),
+        [styles[`dim-${state.dim}`]]: state.dim !== undefined,
     };
-}
+};

@@ -41,23 +41,23 @@ export function placePopup({
 
     switch (placement.anchor) {
         case 'top':
-            spaceForPopup.height = distances.toTop;
+            spaceForPopup.height = distances.toTop - gap;
             spaceForPopup.top = viewport.top;
             break;
 
         case 'bottom':
-            spaceForPopup.height = distances.toBottom;
-            spaceForPopup.top = target.bottom;
+            spaceForPopup.height = distances.toBottom - gap;
+            spaceForPopup.top = target.bottom + gap;
             break;
 
         case 'left':
-            spaceForPopup.width = distances.toLeft;
+            spaceForPopup.width = distances.toLeft - gap;
             spaceForPopup.left = viewport.left;
             break;
 
         case 'right':
-            spaceForPopup.width = distances.toRight;
-            spaceForPopup.left = target.right;
+            spaceForPopup.width = distances.toRight - gap;
+            spaceForPopup.left = target.right + gap;
             break;
     }
 

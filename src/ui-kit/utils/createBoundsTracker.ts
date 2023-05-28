@@ -12,7 +12,7 @@ interface ResizeTrackerOptions {
 export type ResizeTrackerResult = [getBounds: Accessor<DOMRect>, recheck: () => void];
 
 export function createBoundsTracker(
-    nodeGetter: () => HTMLElement | undefined,
+    nodeGetter: () => HTMLElement | null,
     { pollIntervalMs = 100 }: ResizeTrackerOptions = {},
 ): ResizeTrackerResult {
     const [getTargetBounds, setTargetBounds] = createSignal<DOMRect>(

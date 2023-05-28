@@ -1,7 +1,7 @@
 import { Component } from 'solid-js';
 import { container } from '../../../ui-kit/atoms/container/container';
 import { RadioGroup, RadioGroupOption } from '../../../ui-kit/components/inputs/RadioGroup/RadioGroup';
-import { Size } from '../../../ui-kit/types';
+import { Size } from '../../../ui-kit/utils/Size';
 import { StoryControlDescription, StoryControlProps } from './types';
 
 interface SizeRadioControlOptions {

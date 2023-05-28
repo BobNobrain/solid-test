@@ -1,9 +1,11 @@
-type ClassListOrClassName = Record<string, boolean | undefined> | string | undefined
+export type Styles = Record<string, boolean | undefined>;
+
+type ClassListOrClassName = Styles | string | undefined
 
 export function composeStyles(
     ...args: ClassListOrClassName[]
-): Record<string, boolean | undefined> {
-    const result: Record<string, boolean | undefined> = {};
+): Styles {
+    const result: Styles = {};
 
     for (const classes of args) {
         if (!classes) {

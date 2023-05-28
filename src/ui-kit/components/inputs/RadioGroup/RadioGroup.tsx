@@ -1,6 +1,7 @@
 import { For, JSX } from 'solid-js';
-import { Color, Size } from '../../../types';
+import { Color } from '../../../types';
 import { Radiobox } from '../Radiobox/Radiobox';
+import { Size } from '../../../utils/Size';
 
 export interface RadioGroupOption<T> {
     label?: JSX.Element;

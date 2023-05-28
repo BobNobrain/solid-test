@@ -100,11 +100,11 @@ export function App() {
             </div>
             <div classList={container({})}>
                 <div classList={container({ direction: 'column' })}>
-                    <TextInput value={getText()} onUpdate={setText} placeholder="Text..." size="xs" />
-                    <TextInput value={getText()} onUpdate={setText} placeholder="Text..." size="s" />
+                    <TextInput value={getText()} onUpdate={setText} placeholder="Text..." outerSize="xs" />
+                    <TextInput value={getText()} onUpdate={setText} placeholder="Text..." outerSize="s" />
                     <TextInput value={getText()} onUpdate={setText} placeholder="Text..." />
-                    <TextInput value={getText()} onUpdate={setText} placeholder="Text..." size="l" />
-                    <TextInput value={getText()} onUpdate={setText} placeholder="Text..." size="xl" />
+                    <TextInput value={getText()} onUpdate={setText} placeholder="Text..." outerSize="l" />
+                    <TextInput value={getText()} onUpdate={setText} placeholder="Text..." outerSize="xl" />
                     <TextInput
                         value={getText()}
                         onUpdate={setText}
@@ -113,11 +113,11 @@ export function App() {
                     <TextInput value={getText()} onUpdate={setText} label="" />
                 </div>
                 <div classList={container({ direction: 'column' })}>
-                    <TextInput value={getText()} onUpdate={setText} label="Label" size="xs" />
-                    <TextInput value={getText()} onUpdate={setText} label="Label" size="s" />
+                    <TextInput value={getText()} onUpdate={setText} label="Label" outerSize="xs" />
+                    <TextInput value={getText()} onUpdate={setText} label="Label" outerSize="s" />
                     <TextInput value={getText()} onUpdate={setText} label="Label" />
-                    <TextInput value={getText()} onUpdate={setText} label="Label" size="l" />
-                    <TextInput value={getText()} onUpdate={setText} label="Label" size="xl" />
+                    <TextInput value={getText()} onUpdate={setText} label="Label" outerSize="l" />
+                    <TextInput value={getText()} onUpdate={setText} label="Label" outerSize="xl" />
                 </div>
                 <div classList={container({ direction: 'column' })}>
                     <TextInput value={getText()} onUpdate={setText} />
@@ -137,31 +137,31 @@ export function App() {
                         value={getText()}
                         onUpdate={setText}
                         before={(
-                            <Button color="info" size="s">...</Button>
+                            <Button color="info" outerSize="s">...</Button>
                         )}
                     />
                     <TextInput
                         value={getText()}
                         onUpdate={setText}
                         after={(
-                            <Button color="warn" size="s">#</Button>
+                            <Button color="warn" outerSize="s">#</Button>
                         )}
                     />
                     <TextInput
                         value={getText()}
                         onUpdate={setText}
                         before={(
-                            <Button color="primary" size="s">...</Button>
+                            <Button color="primary" outerSize="s">...</Button>
                         )}
                         after={(
-                            <Button color="error" square size="s">!</Button>
+                            <Button color="error" square outerSize="s">!</Button>
                         )}
                     />
                     <TextInput
                         value={getText()}
                         onUpdate={setText}
                         after={(
-                            <Button mode="text" square size="s">
+                            <Button mode="text" square outerSize="s">
                                 <IconCross/>
                             </Button>
                         )}
@@ -220,44 +220,44 @@ export function App() {
             </div>
 
             <div classList={container({ wrap: true, padding: 's' })}>
-                <Button size="xs">Default</Button>
-                <Button size="xs" color="primary">Primary XS</Button>
-                <Button size="xs" color="success">Success XS</Button>
-                <Button size="xs" color="info">Info XS</Button>
-                <Button size="xs" color="warn">Warn XS</Button>
-                <Button size="xs" color="error">Error XS</Button>
+                <Button outerSize="xs">Default</Button>
+                <Button outerSize="xs" color="primary">Primary XS</Button>
+                <Button outerSize="xs" color="success">Success XS</Button>
+                <Button outerSize="xs" color="info">Info XS</Button>
+                <Button outerSize="xs" color="warn">Warn XS</Button>
+                <Button outerSize="xs" color="error">Error XS</Button>
             </div>
             <div classList={container({ wrap: true, padding: 's' })}>
-                <Button size="s">Default S</Button>
-                <Button size="s" color="primary">Primary S</Button>
-                <Button size="s" color="success">Success S</Button>
-                <Button size="s" color="info">Info S</Button>
-                <Button size="s" color="warn">Warn S</Button>
-                <Button size="s" color="error">Error S</Button>
+                <Button outerSize="s">Default S</Button>
+                <Button outerSize="s" color="primary">Primary S</Button>
+                <Button outerSize="s" color="success">Success S</Button>
+                <Button outerSize="s" color="info">Info S</Button>
+                <Button outerSize="s" color="warn">Warn S</Button>
+                <Button outerSize="s" color="error">Error S</Button>
             </div>
             <div classList={container({ wrap: true, padding: 's' })}>
-                <Button size="m">Default M</Button>
-                <Button size="m" color="primary">Primary M</Button>
-                <Button size="m" color="success">Success M</Button>
-                <Button size="m" color="info">Info M</Button>
-                <Button size="m" color="warn">Warn M</Button>
-                <Button size="m" color="error">Error M</Button>
+                <Button outerSize="m">Default M</Button>
+                <Button outerSize="m" color="primary">Primary M</Button>
+                <Button outerSize="m" color="success">Success M</Button>
+                <Button outerSize="m" color="info">Info M</Button>
+                <Button outerSize="m" color="warn">Warn M</Button>
+                <Button outerSize="m" color="error">Error M</Button>
             </div>
             <div classList={container({ wrap: true, padding: 's' })}>
-                <Button size="l">Default L</Button>
-                <Button size="l" color="primary">Primary L</Button>
-                <Button size="l" color="success">Success L</Button>
-                <Button size="l" color="info">Info L</Button>
-                <Button size="l" color="warn">Warn L</Button>
-                <Button size="l" color="error">Error L</Button>
+                <Button outerSize="l">Default L</Button>
+                <Button outerSize="l" color="primary">Primary L</Button>
+                <Button outerSize="l" color="success">Success L</Button>
+                <Button outerSize="l" color="info">Info L</Button>
+                <Button outerSize="l" color="warn">Warn L</Button>
+                <Button outerSize="l" color="error">Error L</Button>
             </div>
             <div classList={container({ wrap: true, padding: 's' })}>
-                <Button size="xl">Default XL</Button>
-                <Button size="xl" color="primary">Primary XL</Button>
-                <Button size="xl" color="success">Success XL</Button>
-                <Button size="xl" color="info">Info XL</Button>
-                <Button size="xl" color="warn">Warn XL</Button>
-                <Button size="xl" color="error">Error XL</Button>
+                <Button outerSize="xl">Default XL</Button>
+                <Button outerSize="xl" color="primary">Primary XL</Button>
+                <Button outerSize="xl" color="success">Success XL</Button>
+                <Button outerSize="xl" color="info">Info XL</Button>
+                <Button outerSize="xl" color="warn">Warn XL</Button>
+                <Button outerSize="xl" color="error">Error XL</Button>
             </div>
             <div classList={container({})}>
                 <Checkbox value={checked()} onUpdate={setChecked} size="xs" color="default"/>

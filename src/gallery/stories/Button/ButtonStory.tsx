@@ -1,5 +1,6 @@
 import { Button } from '../../../ui-kit/components/Button/Button';
-import { Color, Size } from '../../../ui-kit/types';
+import { Color } from '../../../ui-kit/types';
+import { Size } from '../../../ui-kit/utils/Size';
 import { checkboxControl } from '../../components/controls/CheckboxControl';
 import { colorRadioControl } from '../../components/controls/ColorRadioControl';
 import { sizeRadioControl } from '../../components/controls/SizeRadioControl';
@@ -21,7 +22,7 @@ export const ButtonStory: StoryDescription<ButtonStoryControls> = {
         return (
             <Button
                 color={props.controls.color}
-                size={props.controls.size}
+                outerSize={props.controls.size}
                 loading={props.controls.loading}
                 disabled={props.controls.disabled}
                 square={props.controls.square}

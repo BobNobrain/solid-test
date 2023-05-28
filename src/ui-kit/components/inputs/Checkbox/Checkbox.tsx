@@ -5,9 +5,10 @@ import {
     Show,
 } from 'solid-js';
 import { text } from '../../../atoms/text/text';
-import { Color, Size } from '../../../types';
+import { Color } from '../../../types';
 import { Check } from './Check/Check';
 import styles from './Checkbox.css';
+import { Size } from '../../../utils/Size';
 
 export interface CheckboxProps {
     value: boolean | undefined;

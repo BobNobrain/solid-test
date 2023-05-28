@@ -48,8 +48,10 @@
         ],
         "no-confusing-arrow": "off",
         "no-continue": "off",
+        "no-mixed-operators": "off",
         "no-restricted-syntax": "off",
-        "no-shadow": "off"
+        "no-shadow": "off",
+        "prefer-destructuring": "off"
     },
     "overrides": [
         {

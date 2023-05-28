@@ -1,6 +1,8 @@
 import { StoryDescription } from '../components/Story/types';
 import { ButtonStory } from './Button/ButtonStory';
 import { CheckboxStory } from './Checkbox/CheckboxStory';
+import { DropdownStory } from './Dropdown/DropdownStory';
+import { PickerStory } from './Picker/PickerStory';
 import { PopupStory } from './Popup/PopupStory';
 import { TextInputStory } from './TextInput/TextInputStory';
 
@@ -10,6 +12,8 @@ const allStories: StoryDescription<any>[] = [
     TextInputStory,
     CheckboxStory,
     PopupStory,
+    DropdownStory,
+    PickerStory,
 ];
 
 export default allStories;

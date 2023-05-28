@@ -27,19 +27,19 @@
 }
 
 .size-xs {
-    --block-size: 24px;
+    --block-size: var(--size-xs);
 }
 .size-s {
-    --block-size: 28px;
+    --block-size: var(--size-s);
 }
 .size-m {
-    --block-size: 36px;
+    --block-size: var(--size-m);
 }
 .size-l {
-    --block-size: 48px;
+    --block-size: var(--size-l);
 }
 .size-xl {
-    --block-size: 64px;
+    --block-size: var(--size-xl);
 }
 
 .opacity-0 {

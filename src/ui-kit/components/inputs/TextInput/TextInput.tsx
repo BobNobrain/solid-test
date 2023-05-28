@@ -1,7 +1,11 @@
 import { Component, createMemo, JSX } from 'solid-js';
-import { Size, Validity } from '../../../types';
-import { InputWrapper } from '../InputWrapper/InputWrapper';
+import { Validity } from '../../../types';
+import { Field } from '../Field/Field';
 import styles from './TextInput.css';
+import { Size } from '../../../utils/Size';
+import { createRef } from '../../../utils/ref';
+import { composeStyles } from '../../../utils/styles';
+import { text } from '../../../atoms/text/text';
 
 export interface TextInputProps {
     value: string;
@@ -10,7 +14,7 @@ export interface TextInputProps {
     placeholder?: string;
     isPassword?: boolean;
     name?: string;
-    size?: Size;
+    outerSize?: Size;
     validity?: Validity;
     disabled?: boolean;
     readonly?: boolean;
@@ -24,40 +28,48 @@ export interface TextInputProps {
 
 export const TextInput: Component<TextInputProps> = (props) => {
     const inputType = () => props.isPassword ? 'password' : 'text';
+    const inputRef = createRef<HTMLInputElement>();
 
     const classList = createMemo(() => {
-        return {
-            [styles[`size-${props.size ?? 'm'}`]]: true,
-        };
+        return composeStyles(
+            text({ size: props.outerSize ?? 'm' }),
+            {
+                [styles[`size-${props.outerSize ?? 'm'}`]]: true,
+            },
+        );
     });
 
+    const focusInput = () => inputRef.value()?.focus();
+
     return (
-        <InputWrapper
-            renderInput={(ref) => (
-                <input
-                    ref={ref.ref}
-
-                    value={props.value}
-                    onInput={(ev) => props.onUpdate?.(ev.currentTarget.value)}
-
-                    class={styles.input}
-                    classList={classList()}
-                    type={inputType()}
-                    placeholder={props.placeholder}
-
-                    readonly={props.readonly}
-                    disabled={props.disabled}
-
-                    inputmode={props.inputMode}
-                    name={props.name}
-                />
-            )}
-            size={props.size}
+        <Field
+            outerSize={props.outerSize}
+            innerSize={props.outerSize}
             validity={props.validity}
             disabled={props.disabled}
-            before={props.before}
-            after={props.after}
             label={props.label}
-        />
+            onActivate={focusInput}
+            behavior="text"
+        >
+            {props.before}
+            <input
+                ref={inputRef.ref}
+
+                value={props.value}
+                onInput={(ev) => props.onUpdate?.(ev.currentTarget.value)}
+
+                class={styles.input}
+                classList={classList()}
+                type={inputType()}
+                placeholder={props.placeholder}
+
+                readonly={props.readonly}
+                disabled={props.disabled}
+
+                inputmode={props.inputMode}
+                name={props.name}
+            />
+            {props.after}
+        </Field>
     );
 };
