@@ -1,11 +1,11 @@
 import { createMemo, JSX, ParentComponent } from 'solid-js';
 import { Color } from '../../types';
-import { Size, pixelSize } from '../../utils/Size';
+import { pixelSize, InnerSize, Size } from '../../utils/Size';
 import styles from './Icon.css';
 
 export interface IconProps {
-    size?: Size;
-    color?: Color | 'icon';
+    size?: InnerSize | Size;
+    color?: Color | 'icon' | 'inherit';
     rotate?: number;
     flipHorizontally?: boolean;
     flipVertically?: boolean;
@@ -41,7 +41,6 @@ export const Icon: ParentComponent<IconProps> = (props) => {
             viewBox={props.viewBox ?? '0 0 100 100'}
             class={styles.icon}
             classList={{
-                // [styles[`size-${props.size ?? 'm'}`]]: true,
                 [styles[`color-${props.color ?? 'icon'}`]]: true,
             }}
             style={css()}

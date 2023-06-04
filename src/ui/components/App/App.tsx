@@ -10,6 +10,7 @@ import { Paragraph } from '../../../ui-kit/components/text/Paragraph/Paragraph';
 import { Text } from '../../../ui-kit/components/text/Text/Text';
 import { IconCross } from '../../../ui-kit/icons/IconCross';
 import { card } from '../../../ui-kit/atoms/card/card';
+import { Icon } from '../../../ui-kit/components/Icon/Icon';
 
 export function App() {
     const [getN, setN] = createSignal(0);
@@ -162,7 +163,9 @@ export function App() {
                         onUpdate={setText}
                         after={(
                             <Button mode="text" square outerSize="s">
-                                <IconCross/>
+                                <Icon>
+                                    <IconCross/>
+                                </Icon>
                             </Button>
                         )}
                     />

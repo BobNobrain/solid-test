@@ -30,7 +30,7 @@ export const fixedContainer: Atom<FixedContainerState> = ({
     let innerSize = sizes.innerSize ?? DEFAULT_INNER_SIZE;
 
     if (sizes.outerSize && !sizes.innerSize) {
-        innerSize = smallerSize[outerSize] ?? 'xs';
+        innerSize = smallerSize[outerSize];
     } else if (sizes.innerSize && !sizes.outerSize) {
         outerSize = largerSize[innerSize] ?? 'xl';
     }

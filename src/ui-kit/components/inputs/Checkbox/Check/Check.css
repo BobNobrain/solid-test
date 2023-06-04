@@ -2,6 +2,7 @@
     border-radius: var(--border-radius);
     border: 2px solid transparent;
     color: var(--color-text-contrast);
+    box-sizing: content-box;
 }
 
 :focus-visible + .box {
@@ -24,25 +25,29 @@
     border-color: rgb(var(--color-rgb));
 }
 
+.size-xxs {
+    width: var(--size-xxs);
+    height: var(--size-xxs);
+}
 .size-xs {
-    width: 20px;
-    height: 20px;
+    width: var(--size-xs);
+    height: var(--size-xs);
 }
 .size-s {
-    width: 24px;
-    height: 24px;
+    width: var(--size-s);
+    height: var(--size-s);
 }
 .size-m {
-    width: 28px;
-    height: 28px;
+    width: var(--size-m);
+    height: var(--size-m);
 }
 .size-l {
-    width: 36px;
-    height: 36px;
+    width: var(--size-l);
+    height: var(--size-l);
 }
 .size-xl {
-    width: 48px;
-    height: 48px;
+    width: var(--size-xl);
+    height: var(--size-xl);
 }
 
 .color-default {

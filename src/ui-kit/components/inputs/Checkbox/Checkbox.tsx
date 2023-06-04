@@ -8,7 +8,7 @@ import { text } from '../../../atoms/text/text';
 import { Color } from '../../../types';
 import { Check } from './Check/Check';
 import styles from './Checkbox.css';
-import { Size } from '../../../utils/Size';
+import { DEFAULT_OUTER_SIZE, Size, smallerSize } from '../../../utils/Size';
 
 export interface CheckboxProps {
     value: boolean | undefined;
@@ -26,6 +26,7 @@ export interface CheckboxProps {
 export const Checkbox: Component<CheckboxProps> = (props) => {
     const wrapperClassList = createMemo(() => ({
         [styles.disabled]: props.disabled,
+        [styles[`size-${props.size ?? DEFAULT_OUTER_SIZE}`]]: true,
     }));
 
     const checked = () => props.value ?? false;
@@ -54,7 +55,7 @@ export const Checkbox: Component<CheckboxProps> = (props) => {
             <Check
                 checked={props.value}
                 color={props.color}
-                size={props.size}
+                size={smallerSize[props.size ?? DEFAULT_OUTER_SIZE]}
                 disabled={props.disabled}
             />
             <Show

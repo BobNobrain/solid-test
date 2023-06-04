@@ -1,7 +1,3 @@
-.field {
-    /* --fixed-container-border-color: rgb(var(--primary-rgb)); */
-}
-
 .field:focus-within,
 .field.active {
     background-color: var(--bg-float);

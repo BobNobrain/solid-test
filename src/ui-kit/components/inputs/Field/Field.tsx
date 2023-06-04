@@ -29,6 +29,8 @@ export interface FieldProps {
 
 export const Field: ParentComponent<FieldProps> = (props) => {
     const wrapperClassList = createMemo(() => {
+        const behavior = !props.disabled && props.behavior || 'default';
+
         return composeStyles(
             fixedContainer({
                 outerSize: props.outerSize,
@@ -41,7 +43,7 @@ export const Field: ParentComponent<FieldProps> = (props) => {
                 [styles.disabled]: props.disabled,
                 [styles.active]: props.isActive,
                 [styles['with-label']]: props.label !== undefined,
-                [styles[`behavior-${props.behavior ?? 'default'}`]]: true,
+                [styles[`behavior-${behavior}`]]: true,
             },
         );
     });
@@ -53,7 +55,13 @@ export const Field: ParentComponent<FieldProps> = (props) => {
         };
     });
 
-    const handleClick = () => props.onActivate?.();
+    const handleClick = () => {
+        if (props.disabled || !props.onActivate) {
+            return;
+        }
+
+        props.onActivate();
+    };
 
     return (
         <div
